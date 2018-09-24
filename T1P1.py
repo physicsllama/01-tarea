@@ -25,13 +25,11 @@ def derivada_4(f, x, step):
 x0 = 1.388 
 h = np.logspace(-1, -15, 15, base = 10)
 
-h = np.float64(h)
+x0 = np.float32(x0) 
+h = np.float32(h)
 
 derivadas_1 = - derivada_1(np.cos, x0, h)
 derivadas_4 = - derivada_4(np.cos, x0, h)
-
-#derivadas_1 = np.float64(derivadas_1)
-#derivadas_4 = np.float64(derivadas_4)
 
 dif_1 = np.fabs(np.sin(x0) - derivadas_1)
 dif_4 = np.fabs(np.sin(x0) - derivadas_4)
@@ -41,5 +39,54 @@ plt.yscale('log')
 plt.plot(h, dif_1, label = "$\mathcal{O}(h)$")
 plt.plot(h, dif_4, label = "$\mathcal{O}(h^4)$")
 plt.legend()
+plt.xlabel("Paso $h$")
+plt.ylabel("Error")
 
-plt.show()
+plt.savefig("PlotP1_float32.png")  
+plt.clf()
+
+x0 = 1.388 
+h = np.logspace(-1, -15, 15, base = 10)
+
+x0 = np.float64(x0) 
+h = np.float64(h)
+
+derivadas_1 = - derivada_1(np.cos, x0, h)
+derivadas_4 = - derivada_4(np.cos, x0, h)
+
+dif_1 = np.fabs(np.sin(x0) - derivadas_1)
+dif_4 = np.fabs(np.sin(x0) - derivadas_4)
+
+plt.xscale('log')
+plt.yscale('log')
+plt.plot(h, dif_1, label = "$\mathcal{O}(h)$")
+plt.plot(h, dif_4, label = "$\mathcal{O}(h^4)$")
+plt.legend()
+plt.xlabel("Paso $h$")
+plt.ylabel("Error")
+
+plt.savefig("PlotP1_float64.png")  
+plt.clf()
+
+x0 = 1.388 
+h = np.logspace(-1, -15, 15, base = 10)
+
+x0 = np.float128(x0) 
+h = np.float128(h)
+
+derivadas_1 = - derivada_1(np.cos, x0, h)
+derivadas_4 = - derivada_4(np.cos, x0, h)
+
+dif_1 = np.fabs(np.sin(x0) - derivadas_1)
+dif_4 = np.fabs(np.sin(x0) - derivadas_4)
+
+plt.xscale('log')
+plt.yscale('log')
+plt.plot(h, dif_1, label = "$\mathcal{O}(h)$")
+plt.plot(h, dif_4, label = "$\mathcal{O}(h^4)$")
+plt.legend()
+plt.xlabel("Paso $h$")
+plt.ylabel("Error")
+
+plt.savefig("PlotP1_float128.png")  
+plt.clf()
