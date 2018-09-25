@@ -26,6 +26,47 @@
 \LARGE {\bf Tarea 1} 
 \end{center}
 
+\normalsize 
+
+\section*{Problema 1}
+\subsection*{Introducción} 
+
+La definición de la derivada $f'(x)$ de una función $f(x)$ es 
+\begin{align}
+f'(x)= \lim_{h\to 0} \frac{f(x+h)-f(x)}{h},
+\end{align}
+donde el límite por naturaleza es un proceso {\it continuo}. Claramente al calcular derivadas con un computador, esto no es factible. La opción más simple para calcular una derivada sería 
+\begin{align}
+f'(x)\approx \frac{f(x+h)-f(x)}{h},
+\end{align} 
+lo cual sale a partir de hacer una expansión de Taylor para $f$, y truncar términos de orden mayor a $h$. La idea es tomar un $h$ pequeño para que esta aproximación funcione. Si uno se queda con más términos en la serie de Taylor, y juega con álgebra, puede llegar a una aproximación que trunca términos de orden mayor a $h^3$. 
+\begin{align}
+d
+\end{align}
+
+
+\subsection*{Metodología} 
+
+\subsection*{Resultados} 
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{PlotP1_Float32}
+\end{figure}
+\begin{figure}[ht!]
+\centering
+\includegraphics{PlotP1_Float64}
+\end{figure}
+\begin{figure}[ht!]
+\centering
+\includegraphics{PlotP1_Float128}
+\end{figure}
+\subsection*{Conclusiones} 
+
+\section*{Problema 2}
+\subsection*{Introducción} 
+\subsection*{Metodología} 
+\subsection*{Resultados} 
+\subsection*{Conclusiones} 
 
 
 

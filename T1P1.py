@@ -42,7 +42,7 @@ plt.legend()
 plt.xlabel("Paso $h$")
 plt.ylabel("Error")
 
-plt.savefig("PlotP1_float32.png")  
+plt.savefig("PlotP1_float32.png",dpi=500)  
 plt.clf()
 
 x0 = 1.388 
@@ -65,7 +65,7 @@ plt.legend()
 plt.xlabel("Paso $h$")
 plt.ylabel("Error")
 
-plt.savefig("PlotP1_float64.png")  
+plt.savefig("PlotP1_float64.png",dpi=500)  
 plt.clf()
 
 x0 = 1.388 
@@ -88,5 +88,5 @@ plt.legend()
 plt.xlabel("Paso $h$")
 plt.ylabel("Error")
 
-plt.savefig("PlotP1_float128.png")  
+plt.savefig("PlotP1_float128.png",dpi=500)  
 plt.clf()
