@@ -87,10 +87,15 @@ Para $h$ ``grande'' (i.e. $h\geq 10^{-7}$), la precisión del método $\mathcal{O}
 
 \subsection*{Introducción} 
 
+La radiación de fondo cósmica es nuestro dato más importante para entender el universo temprano; nos da información sobre las condiciones iniciales del universo, y da a conocer cómo y por qué se formaron estructuras a grandes escalas. 
+
+Aquí tomamos datos del satélite COBE sobre el espectro  de monopolo de la radiación de fondo, y los graficamos con sus barras de error. Luego encontramos de forma teórica la potencia proveniente de la radiación, haciendo una integral númerica sobre un espectro de Planck.  Comparando esto con la integral numérica de los datos, conseguimos una predicción sobre la temperatura asociada al espectro Planckiano de la radiación.  De ahí comparamos el espectro teórico de temperatura conocida $T=2.725K$ con el espectro proveniente de la temperatura calculada. 
+
+
 \subsection*{Metodología} 
 
 \begin{enumerate}
-\item Parte 1
+\item En la parte 1 el programa carga la tabla de datos del archivo de COBE, y definimos como variable $X$ a la lista con las frecuencias. Definimos como $Y$ a la lista con el espectro de monopolo, y $err$ a la lista con los errores. Graficamos estos datos, haciendo una conversión de unidades para las frecuencias, que estaban en cm$^{-1}$. Agrandamos las barras de error por un factor $400$ para que sean visibles. 
 \item Para esta parte consideramos la integral 
 \begin{align}
 P = \frac{2h}{c^2}\left(\frac{k_BT}{h}\right)^4 \int_0^{\infty} \frac{x^3}{e^x-1} dx.
@@ -99,6 +104,10 @@ Como esto va a hasta infinito, no se puede hacer numéricamente de inmediato. Con
 \begin{align}
 P = \frac{2h}{c^2}\left(\frac{k_BT}{h}\right)^4 \int_0^{\pi/2} \frac{\sin^3(y)}{\cos^5(y)(\exp(\tan(y))-1)} dy.
 \end{align}
+Hacemos esta integral con el método del trapecio. A pesar de que el integrando es finito cuando $y\to0$, hay una división por 0 en $y=0$. Entonces la integración numérica comienza desde el valor $y+h$, con $h$ el paso, pero no hay que hacer una regulación del integrando ya que es bien comportado en el intervalo $(0,\pi/2)$. 
+\item Para integrar en frecuencia el espectro observado utilizamos los datos definidos en la parte 1. Igualamos  
+\item Hola
+\item Hola
 \end{enumerate}
 
 \subsection*{Resultados} 

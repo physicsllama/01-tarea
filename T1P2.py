@@ -17,13 +17,13 @@ from astropy import constants as const
 
 #CARGAR DATOS
 
-x = np.loadtxt("firas_monopole_spec_v1.txt", usecols = 0)
-y = np.loadtxt("firas_monopole_spec_v1.txt", usecols = 1)
+X = np.loadtxt("firas_monopole_spec_v1.txt", usecols = 0)
+Y = np.loadtxt("firas_monopole_spec_v1.txt", usecols = 1)
 err = np.loadtxt("firas_monopole_spec_v1.txt", usecols = 3)
 
 #GRAFICAR DATOS
 fig, ax = plt.subplots() 
-ax.errorbar(x * 3e10, y, xerr = 0, yerr = 400* err / 1000)
+ax.errorbar(X * 3e10, Y, xerr = 0, yerr = 400* err / 1000)
 
 plt.xlabel("Frecuencia (s$^{-1}$)")
 plt.ylabel("Espectro de Monopolo (MJy/sr)")
@@ -59,5 +59,12 @@ print(Integral)
 
 
 #INTEGRAR ESPECTRO
+def integral_2():
+    n = len(X)
+    I = 0
+    for k in range(n-1):
+        I = I + (X[k+1]-X[k])/2 * (Y[k+1]+Y[k])
+    return I 
 
+print(integral_2())
 
