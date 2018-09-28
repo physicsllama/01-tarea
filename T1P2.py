@@ -86,12 +86,15 @@ def planck(T,v):
 
 V = np.linspace(0,7e11,100)
 
+fig, ax = plt.subplots() 
 plt.plot(V,planck(T1,V),label="Prediccion con $T=2.725$K")
 plt.plot(V,planck(T2,V),label="Prediccion con Datos")
-plt.legend()
 plt.xlabel("Frecuencia (s$^{-1}$)")
 plt.ylabel("Espectro de Monopolo (MJy/sr)")
 plt.savefig("espectro2.png",dpi=300)
+ax.errorbar(X, Y, xerr = 0, yerr = 400 * err / 1000, label = "Datos")
+plt.legend()
+plt.savefig("alltogether.png",dpi=300)
 plt.show()
 
 

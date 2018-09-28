@@ -77,9 +77,9 @@ En la Figura 1 se encuentran los gráficos producidos para el error $\Delta$, eva
 
 
 \subsection*{Conclusiones} 
-El comportamiento de $\Delta_i$ no es tan simple. Uno esperaría que el error disminuye a medida que $h$ se hace más chico, dado que disminuye el efecto de despreciar términos de mayor orden en $h$. El problema es que el computador no tiene infinita precisión en los números que calcula. Por ejemplo, la precisión de float64 es del orden de 10$^{-15}$. Para números con muchos decimales, eventualmente el computador trunca el número. Entonces con cada método si restamos algo en el numerador, el resultado no va a ser ``honesto'', va a ser algo con precisión truncada. Pero esto es dividido por un $h$ muy pequeño, entonces este error chico se agranda. Esto se ve dramáticamente en la figura 1(a), donde el error del método $\mathcal{O}(h^4)$ alcanza $10^6$. El error probablemente no aumenta más para el método $\mathcal{O}(h)$ en este caso porque el numerador simplemente arroja el valor 0, resultando en un error constante de orden 1. 
+El comportamiento de $\Delta_i$ no es tan simple. Uno esperaría que el error disminuye a medida que $h$ se hace más chico, dado que disminuye el efecto de despreciar términos de mayor orden en $h$. El problema es que el computador no tiene infinita precisión en los números que calcula. Por ejemplo, la precisión de float64 es del orden de 10$^{-15}$. Para números con muchos decimales, eventualmente el computador trunca el número. Entonces con cada método si restamos algo en el numerador, el resultado no va a ser ``honesto'', va a ser algo con precisión truncada. Pero esto es dividido por un $h$ muy pequeño, entonces este error chico se agranda. Esto se ve dramáticamente en la Figura 1(a), donde el error del método $\mathcal{O}(h^4)$ alcanza $10^6$. El error probablemente no aumenta más para el método $\mathcal{O}(h)$ en este caso porque el numerador simplemente arroja el valor 0, resultando en un error constante de orden 1. 
 
-Para $h$ ``grande'' (i.e. $h\geq 10^{-7}$), la precisión del método $\mathcal{O}(h^4)$ suele ser mejor. Esto tiene sentido, dado que lo que hace este método es justamente despreciar menos potencias de $h$. Si $h$ es ``grande'', despreciar términos con $h^2$ ya puede tener efectos notorios, y la precisión del método $\mathcal{O}(h)$ disminuye sustancialmente.  Con las figuras 1(b) y 1(c) se ve que la máxima precisión alcanzada por el método $\mathcal{O}(h)$ es en $h\approx 10^{-8}$. Esta misma precisión se alcanza con $\mathcal{O}(h^4)$ con $h\approx 10^{-2}$. Aquí se ve heurísticamente la forma en que (para $h$'s que el computador puede procesar) el método $\mathcal{O}(h^4)$ tiene más precisión que $\mathcal{O}(h)$. Aún si obtiene más precisión, este método es un poco más ineficiente al tener que evaluar la función en más puntos.
+Para $h$ ``grande'' (i.e. $h\geq 10^{-7}$), la precisión del método $\mathcal{O}(h^4)$ suele ser mejor. Esto tiene sentido, dado que lo que hace este método es justamente despreciar menos potencias de $h$. Si $h$ es ``grande'', despreciar términos con $h^2$ ya puede tener efectos notorios, y la precisión del método $\mathcal{O}(h)$ disminuye sustancialmente.  Con las Figuras 1(b) y 1(c) se ve que la máxima precisión alcanzada por el método $\mathcal{O}(h)$ es en $h\approx 10^{-8}$. Esta misma precisión se alcanza con $\mathcal{O}(h^4)$ con $h\approx 10^{-2}$. Aquí se ve heurísticamente la forma en que (para $h$'s que el computador puede procesar) el método $\mathcal{O}(h^4)$ tiene más precisión que $\mathcal{O}(h)$. Aún si obtiene más precisión, este método es un poco más ineficiente al tener que evaluar la función en más puntos.
 
 \newpage
 
@@ -110,9 +110,9 @@ Hacemos esta integral con el método del trapecio. A pesar de que el integrando e
 \begin{align}
 B_{\nu}(T) = \frac{2h\nu^3/c^2}{e^{h\nu/k_BT}-1}
 \end{align}
-\item Hola
+\item Se utilizan las funciones de integración de scipy para repetir las integrales de las partes 2 y 3. Se debe usar la integral trapz para los datos, y la quad para la integral sobre la función analítica. La comparación de velocidades entre las funciones del módulo scipy, y nuestros algoritmos, se hace con \%timeit.   
 \end{enumerate}
-
+\newpage
 \subsection*{Resultados} 
 
 Temperatura del espectro en base a los datos y las integrales numéricas: 2.686 K. 
@@ -127,20 +127,26 @@ Temperatura del espectro en base a los datos y las integrales numéricas: 2.686 K
 \includegraphics[width=3in]{espectro2}
 \caption{Espectros Planckianos}
 \end{subfigure}
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=3.3in]{alltogether}
+\caption{Figuras (a) y (b) Superpuestas}
+\end{subfigure}
+
 \caption{Espectro Monopolo CMB}
 \end{figure}
 
-\newpage
+
 
 \subsection*{Conclusiones} 
 
-El espectro 
+La temperatura que se encontró para el espectro en base a los datos fue un poco menor a la que se debería haber encontrado. Esto se puede explicar, por lo menos en parte, por lo siguiente: al integrar el espectro de Planck, uno debe comenzar desde frecuencia 0, hasta infinito. Los datos con los que trabajamos, eso sí, ni comienzan en 0 ni llegan hasta frecuencia infinita. Entonces se está integrando sobre una muestra parcial del espectro real. Esto se ve claramente en la Figura 2, donde en el gráfico (a) los datos comienzan después que las funciones en el gráfico (b).
 
-La temperatura que se encontró para el espectro en base a los datos fue un poco menor a la que se debería haber encontrado. Esto se puede explicar, por lo menos en parte, por lo siguiente: al integrar el espectro de Planck, uno debería 
+A pesar de esta pequeña discrepancia, hay una alta precisión en los resultados y se confirma por lo menos cualitativamente que en efecto el espectro de monopolo del CMB tiene distribución de cuerpo negro.
 
-Datos no empiezan de cero. 
+Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. Entonces en realidad la comparación entre las velocidades depende de cuánta precisión demandamos de nuestro algoritmo. 
 
-Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. La integral numérica sobre el conjunto de datos arrojó el mismo valor con nuestro algoritmo y con el algoritmo de scipy.trapz. El algoritmo scipy.trapz tomó aproximadamente 12$\mu$s, mientras que el nuestro tomó 41$\mu$s. 
+La integral numérica sobre el conjunto de datos arrojó el mismo valor con nuestro algoritmo y con el algoritmo de scipy.trapz. El algoritmo scipy.trapz tomó aproximadamente 12$\mu$s, mientras que el nuestro tomó 41$\mu$s. Los algoritmos de scipy deben tener mayor velocidad por estar escritos de manera óptima, mientras que nuestro algoritmo fue lo más simple posible. Cabe mencionar que es razonable que el algoritmo scipy arrojó el mismo valor que el nuestro para los {\it datos}, ya que no hay mucha ambigüedad en cómo integrar éstos (y el algoritmo scipy también usa algo parecido al método del trapecio).  Pero para integrar la función analítica sí hubo diferencia entre nuestra integración y la de scipy, ya que se hizo de distintas formas. 
 
 
 
