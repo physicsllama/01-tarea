@@ -142,7 +142,7 @@ Temperatura del espectro en base a los datos y las integrales numéricas: 2.686 K
 
 La temperatura que se encontró para el espectro en base a los datos fue un poco menor a la que se debería haber encontrado. Esto se puede explicar, por lo menos en parte, por lo siguiente: al integrar el espectro de Planck, uno debe comenzar desde frecuencia 0, hasta infinito. Los datos con los que trabajamos, eso sí, ni comienzan en 0 ni llegan hasta frecuencia infinita. Entonces se está integrando sobre una muestra parcial del espectro real. Esto se ve claramente en la Figura 2, donde en el gráfico (a) los datos comienzan después que las funciones en el gráfico (b).
 
-A pesar de esta pequeña discrepancia, hay una alta precisión en los resultados y se confirma por lo menos cualitativamente que en efecto el espectro de monopolo del CMB tiene distribución de cuerpo negro.
+A pesar de esta pequeña discrepancia, hay una alta precisión en los resultados, y se ve una temperatura muy cercana a la que debería ser. Además, se confirma por lo menos cualitativamente que en efecto el espectro de monopolo del CMB tiene distribución de cuerpo negro.
 
 Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. Entonces en realidad la comparación entre las velocidades depende de cuánta precisión demandamos de nuestro algoritmo. 
 
