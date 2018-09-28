@@ -105,30 +105,42 @@ Como esto va a hasta infinito, no se puede hacer numéricamente de inmediato. Con
 P = \frac{2h}{c^2}\left(\frac{k_BT}{h}\right)^4 \int_0^{\pi/2} \frac{\sin^3(y)}{\cos^5(y)(\exp(\tan(y))-1)} dy.
 \end{align}
 Hacemos esta integral con el método del trapecio. A pesar de que el integrando es finito cuando $y\to0$, hay una división por 0 en $y=0$. Entonces la integración numérica comienza desde el valor $y+h$, con $h$ el paso, pero no hay que hacer una regulación del integrando ya que es bien comportado en el intervalo $(0,\pi/2)$. 
-\item Para integrar en frecuencia el espectro observado utilizamos los datos definidos en la parte 1. Igualamos  
-\item Hola
+\item Para integrar en frecuencia el espectro observado utilizamos los datos definidos en la parte 1. Nuevamente aplicamos el método del trapecio. Al hacer cambios de unidades adecuados para que todo sea consistente, dividimos la integral numérica calculada en esta parte, por la integral calculada en la parte 2. Esta razón, elevada a $1/4$, es la temperatura. 
+\item Se grafica el espectro Planckiano asociado a una temperatura $T=2.725$K, y otro espectro Planckiano asociado a la temperatura calculada en esta experiencia (ver próxima sección). El espectro Planckiano es
+\begin{align}
+B_{\nu}(T) = \frac{2h\nu^3/c^2}{e^{h\nu/k_BT}-1}
+\end{align}
 \item Hola
 \end{enumerate}
 
 \subsection*{Resultados} 
 
-\begin{figure}
+Temperatura del espectro en base a los datos y las integrales numéricas: 2.686 K. 
+\begin{figure}[ht!]
 \centering
-\includegraphics{espectro_monopolo}
-\caption{Espectro CMB (Barras de Error Magnificadas $\times 400$)}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[width=3in]{espectro_monopolo}
+\caption{Espectro con Datos (Barras de Error $\times 400$)}
+\end{subfigure}\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[width=3in]{espectro2}
+\caption{Espectros Planckianos}
+\end{subfigure}
+\caption{Espectro Monopolo CMB}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics{espectro2}
-\caption{Espectro CMB (Barras de Error Magnificadas $\times 400$)}
-\end{figure}
+\newpage
 
 \subsection*{Conclusiones} 
 
 El espectro 
 
-Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. 
+La temperatura que se encontró para el espectro en base a los datos fue un poco menor a la que se debería haber encontrado. Esto se puede explicar, por lo menos en parte, por lo siguiente: al integrar el espectro de Planck, uno debería 
+
+Datos no empiezan de cero. 
+
+Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. La integral numérica sobre el conjunto de datos arrojó el mismo valor con nuestro algoritmo y con el algoritmo de scipy.trapz. El algoritmo scipy.trapz tomó aproximadamente 12$\mu$s, mientras que el nuestro tomó 41$\mu$s. 
 
 
 
