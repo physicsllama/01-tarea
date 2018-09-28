@@ -118,8 +118,17 @@ Hacemos esta integral con el método del trapecio. A pesar de que el integrando e
 \caption{Espectro CMB (Barras de Error Magnificadas $\times 400$)}
 \end{figure}
 
+\begin{figure}
+\centering
+\includegraphics{espectro2}
+\caption{Espectro CMB (Barras de Error Magnificadas $\times 400$)}
+\end{figure}
+
 \subsection*{Conclusiones} 
 
+El espectro 
+
+Encontramos una diferencia entre la velocidad con la cual integra el módulo scipy.quad, versus la velocidad a la que integra el algoritmo que construimos usando el método del trapecio. El método del trapecio tomó aproximadamente 10ms (con una partición en $N=1000$ partes), mientras que scipy.quad tomó aproximadamente 1ms. Es decir, scipy.quad es 10 veces más rápido para integrar. Vale la pena notar, eso sí, que al tomar $N=100$ para la partición, el tiempo disminuye a 1ms, y la precisión casi no disminuye. 
 
 
 
